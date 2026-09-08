@@ -197,9 +197,9 @@ public class BingoBrazilChatPlugin extends Plugin
 		{
 			return;
 		}
-		// A newly pasted token or a changed site address should take effect immediately rather than
-		// on the next poll -- otherwise the plugin looks broken for five minutes after setup.
-		if ("sharedToken".equals(event.getKey()) || "apiBaseUrl".equals(event.getKey()))
+		// A newly pasted token should take effect immediately rather than on the next poll --
+		// otherwise the plugin looks broken for five minutes after setup.
+		if ("sharedToken".equals(event.getKey()))
 		{
 			leaderboardEtag = null;
 			scheduleConfigRefresh(0L);

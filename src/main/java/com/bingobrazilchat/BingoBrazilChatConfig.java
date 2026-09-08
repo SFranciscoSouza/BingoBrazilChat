@@ -24,18 +24,6 @@ public interface BingoBrazilChatConfig extends Config
 	}
 
 	@ConfigItem(
-		keyName = "apiBaseUrl",
-		name = "Site address",
-		description = "Where to send drops. Leave this alone unless you are testing against a "
-			+ "local copy of the site.",
-		position = 2
-	)
-	default String apiBaseUrl()
-	{
-		return "https://brazilchat.vercel.app";
-	}
-
-	@ConfigItem(
 		keyName = "captureScreenshot",
 		name = "Attach screenshots",
 		description = "Take a screenshot when a listed drop is broadcast and send it as proof. "

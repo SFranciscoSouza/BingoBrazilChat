@@ -45,6 +45,16 @@ public class BingoApiClient
 	private static final MediaType PNG = MediaType.get("image/png");
 	private static final String CLIENT_VERSION = "1.0.0";
 
+	/**
+	 * The only host this plugin ever contacts.
+	 *
+	 * <p>Deliberately a constant rather than a config field: a user-editable address would let a
+	 * player be talked into pointing their RSN and screenshots at somewhere else, and it makes the
+	 * plugin's network behaviour impossible to state precisely. To test against a local server,
+	 * change this line and rebuild.
+	 */
+	private static final String BASE_URL = "https://brazilchat.vercel.app";
+
 	private final OkHttpClient http;
 	private final Gson gson;
 	private final BingoBrazilChatConfig config;
@@ -306,17 +316,7 @@ public class BingoApiClient
 	@Nullable
 	private HttpUrl baseUrl()
 	{
-		String raw = config.apiBaseUrl();
-		if (raw == null)
-		{
-			return null;
-		}
-		String trimmed = raw.trim();
-		while (trimmed.endsWith("/"))
-		{
-			trimmed = trimmed.substring(0, trimmed.length() - 1);
-		}
-		return trimmed.isEmpty() ? null : HttpUrl.parse(trimmed);
+		return HttpUrl.parse(BASE_URL);
 	}
 
 	private String token()
