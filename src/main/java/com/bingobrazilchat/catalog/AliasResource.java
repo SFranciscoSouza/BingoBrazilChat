@@ -17,9 +17,9 @@ import lombok.Value;
 /**
  * Loads the shipped {@code aliases.json} fallback.
  *
- * <p>The {@link Gson} instance is passed in rather than constructed: the Plugin Hub packager fails
- * the build outright on a {@code new Gson()} anywhere under {@code src/main}, and RuneLite provides
- * an injectable one.
+ * <p>The {@link Gson} instance is passed in rather than constructed. The Plugin Hub packager fails
+ * the build outright if a plugin builds its own Gson under {@code src/main} -- RuneLite provides an
+ * injectable one, and that is the only instance a plugin should use.
  */
 public final class AliasResource
 {
