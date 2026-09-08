@@ -1,0 +1,65 @@
+{
+  "_comment": [
+    "Fallback alias table: in-game drop name -> the catalog entry it scores as.",
+    "The server sends an authoritative version of this in /api/plugin/config; this file only",
+    "fills gaps if the server's map is incomplete. Keys are matched after normalisation",
+    "(lowercase, charge-suffix stripped), so 'Scythe of Vitur (uncharged)' is listed without",
+    "its suffix. The 'raid' field is what disambiguates the two Kit/Dust catalog rows."
+  ],
+
+  "aliases": {
+    "kodai insignia": { "name": "Kodai Wand", "raid": "cox" },
+    "metamorphic dust": { "name": "Kit/Dust", "raid": "cox" },
+    "twisted ancestral colour kit": { "name": "Kit/Dust", "raid": "cox" },
+    "twisted ancestral color kit": { "name": "Kit/Dust", "raid": "cox" },
+    "dextrous prayer scroll": { "name": "Dexterous Prayer Scroll", "raid": "cox" },
+
+    "sanguine dust": { "name": "Kit/Dust", "raid": "tob" },
+    "holy ornament kit": { "name": "Kit/Dust", "raid": "tob" },
+    "sanguine ornament kit": { "name": "Kit/Dust", "raid": "tob" }
+  },
+
+  "_ignoredComment": [
+    "Raid loot that broadcasts like a purple but deliberately scores nothing. Listing them keeps",
+    "the debug log free of known noise, so an unmatched line there is a real surprise.",
+    "The ToA entries are an intentional event-rule asymmetry: CoX and ToB kits/dusts score 1,",
+    "ToA's upgrade items score 0 because the catalog has no ToA Kit/Dust row. Do not 'fix' this",
+    "without a matching drop_items row on the server."
+  ],
+
+  "ignored": [
+    "olmlet",
+    "torn prayer scroll",
+    "dark relic",
+    "onyx",
+    "xeric's guard",
+    "xeric's warrior",
+    "xeric's sentinel",
+    "xeric's general",
+    "xeric's champion",
+
+    "lil' zik",
+    "vial of blood",
+    "sinhaza shroud tier 1",
+    "sinhaza shroud tier 2",
+    "sinhaza shroud tier 3",
+    "sinhaza shroud tier 4",
+    "sinhaza shroud tier 5",
+
+    "thread of elidinis",
+    "breach of the scarab",
+    "eye of the corruptor",
+    "jewel of the sun",
+    "jewel of amascut",
+    "cache of runes",
+    "tumeken's guardian",
+    "icthlarin's shroud tier 1",
+    "icthlarin's shroud tier 2",
+    "icthlarin's shroud tier 3",
+    "icthlarin's shroud tier 4",
+    "icthlarin's shroud tier 5",
+    "menaphite ornament kit",
+    "cursed phalanx",
+    "masori crafting kit"
+  ]
+}
