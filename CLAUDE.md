@@ -1,4 +1,4 @@
-# Bingo BrazilChat — working instructions
+# Brazil Chat (formerly Bingo BrazilChat) — working instructions
 
 ## No AI attribution in commits or PRs
 
@@ -23,10 +23,30 @@ contract must land on both sides. The item catalog and alias map are served by
 
 ## Networking
 
-Unlike the other plugins in this account, this one **does** make network requests: it sends a
-player RSN, an item name, and a screenshot to the BrazilChat event site. That must stay disclosed
-in README.md and in the Plugin Hub description. The plugin is inert until the user pastes a shared
-token into config — that empty default is the consent gate.
+Unlike the other plugins in this account, this one **does** make network requests, always and only
+to the fixed address https://brazilchat.vercel.app (the bingo site, which also hosts the database
+and API). The clan's public site is https://brazilchat.com.br, which is only linked, never called. There are four data streams:
+
+- **Announcements** (`showAnnouncements`, **on** by default): a plain GET of the announcement list,
+  with no name or account, made only for confirmed Brazil Chat members. This is the one request a
+  fresh install makes, so it must stay identity-free.
+
+- **Clan connection** (`connectClan`, off by default): RSN + RuneLite account hash, the player's
+  own sign-ups, and once per login the player's own achievements (total level, max, diary tier,
+  CA tier) for the rank-up worklist.
+- **Staff tools** (`staffKey`, empty by default): the in-game clan member list and sign-up
+  management.
+- **Bingo** (`sharedToken`, empty by default): drop broadcasts and screenshots.
+
+All three must stay disclosed in README.md, in the config text, and in the Plugin Hub `warning=`
+line. Any new data stream needs its own opt-in and a disclosure update on all three.
+
+## Plugin Hub
+
+The plugin is published as `plugins/bingo-brazil-chat` in runelite/plugin-hub. **Keep that manifest
+filename.** It is the plugin's identity, and renaming it would make a new submission. The visible
+name comes from `displayName` in `runelite-plugin.properties`. Releases are ordinary bump PRs that
+change `commit=` (and `warning=` when the data streams change).
 
 ## Build
 
